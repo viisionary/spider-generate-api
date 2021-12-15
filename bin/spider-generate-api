@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+const commander = require('commander');
+const program = new commander.Command();
+const {resolve} = require('path')
+const {version} = require(resolve(__dirname, '../package.json'))
+const {readFile} = require("fs/promises");
+
+program.version(version).option('-v, --version', 'show spider-svg cli version')
+const runCommands = require('../src/runCommands')
+program
+    .description('使用 swagger-codegen 生成一系列的ts api')
+    .option('-o, --output <output>', '输出到的文件夹')
+    .option('-c, --config <config>', 'json 地址配置路径').action(async ({output, config}) => {
+    const configJson = await readFile(config)
+    const api =JSON.parse(String(configJson))
+    runCommands(api, output)
+})
+program.parse();
+
+
+// runCommands().then(r => {
+// });
+//
