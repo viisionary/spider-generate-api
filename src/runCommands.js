@@ -57,7 +57,8 @@ async function runCommands(api, output) {
             }
         }
     } catch (e) {
-        console.error("出错", e); // should contain code (exit code) and signal (that caused the termination).
+        console.error("出错"); // should contain code (exit code) and signal (that caused the termination).
+        console.error(e)
     }
 }
 
