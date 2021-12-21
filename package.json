@@ -1,6 +1,6 @@
 {
   "name": "spider-generate-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "根据openAPI生成ts文件",
   "main": "index.js",
   "scripts": {
